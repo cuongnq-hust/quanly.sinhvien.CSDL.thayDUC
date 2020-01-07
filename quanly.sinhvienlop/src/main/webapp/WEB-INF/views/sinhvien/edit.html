@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chinh sua sinhvien</title>
+</head>
+<body>
+<h1>Chinh sua sinhvien</h1>
+<p>
+    <a href="/sinhviens">DS Sinhviens</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-sinhvien}" th:object="${sinhvien}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Ma SV:</td>
+            <td><input type="text" th:field="*{maSV}"/></td>
+        </tr>
+        <tr>
+            <td>Ten SV:</td>
+            <td><input type="text" th:field="*{tenSV}"/></td>
+        </tr>
+        <tr>
+            <td>Ho SV:</td>
+            <td><input type="text" th:field="*{hoSV}"/></td>
+        </tr>
+
+        <tr>
+            <td>Ngay sinh:</td>
+            <td><input type="date" th:field="*{ngaySinh}"/></td>
+        </tr>
+        <tr>
+            <td>Noi sinh:</td>
+            <td><input type="text" th:field="*{noiSinh}"/></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Chinh sua Sinhvien"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

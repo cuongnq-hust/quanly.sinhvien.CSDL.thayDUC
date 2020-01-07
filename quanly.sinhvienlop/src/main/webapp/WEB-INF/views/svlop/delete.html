@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Xoa svlop</title>
+</head>
+<body>
+<h1>Xoa svlop</h1>
+<h2>Chac chan XOA??!!</h2>
+<p>
+    <a href="/svlops">DS Svlop</a>
+</p>
+<form th:action="@{/delete-svlop}" th:object="${svlop}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+
+        <tr>
+            <td>MaSV:</td>
+            <td th:text="${svlop.getSinhvien().getMaSV()}"></td>
+        </tr>
+        <tr>
+            <td>MaLop:</td>
+            <td th:text="${svlop.getLop().getMaLop()}"></td>
+        </tr>
+        <tr>
+            <td>Diem:</td>
+            <td th:text="${svlop.price}"></td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Xoa svlop"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

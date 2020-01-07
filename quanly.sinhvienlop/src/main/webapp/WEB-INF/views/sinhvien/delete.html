@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Xoa sinhvien</title>
+</head>
+<body>
+<h1>Xoa sinhvien</h1>
+<h2>Chac chan XOA??!!</h2>
+<p>
+    <a href="/sinhviens">DS Sinhvien</a>
+</p>
+<form th:action="@{/delete-sinhvien}" th:object="${sinhvien}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Ma SV:</td>
+            <td th:text="${sinhvien.maSV}"></td>
+        </tr>
+        <tr>
+            <td>Ten SV:</td>
+            <td th:text="${sinhvien.tenSV}"></td>
+        </tr>
+        <tr>
+            <td>Ho SV:</td>
+            <td th:text="${sinhvien.hoSV}"></td>
+        </tr>
+        <tr>
+            <td>Ngay sinh:</td>
+            <td th:text="${sinhvien.ngaySinh}"></td>
+        </tr>
+
+        <tr>
+            <td>Noi sinh:</td>
+            <td th:text="${sinhvien.noiSinh}"></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Xoa sinhvien"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

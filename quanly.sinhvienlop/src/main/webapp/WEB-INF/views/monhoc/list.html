@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Monhoc</title>
+</head>
+<body>
+<p><a href="/svlops"><button type="button">TRANG CHU</button></a></p>
+
+<a href="/create-monhoc">Tao moi monhoc</a>
+<h1>Monhoc</h1>
+<table border="1">
+    <tr>
+        <th>Ma MH</th>
+        <th>Ten MH</th>
+        <th>So TC</th>
+
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="monhoc: ${monhocs}">
+        <tr>
+            <td th:text="${monhoc.maMH}"></td>
+            <td th:text="${monhoc.tenMH}"></td>
+            <td th:text="${monhoc.soTC}"></td>
+
+            <td><a th:href="@{/edit-monhoc/__${monhoc.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-monhoc/__${monhoc.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

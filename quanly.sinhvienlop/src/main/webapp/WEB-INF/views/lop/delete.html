@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Xoa lop</title>
+</head>
+<body>
+<h1>Xoa lop</h1>
+<h2>Chac chan XOA??!!</h2>
+<p>
+    <a href="/lops">DS Lop</a>
+</p>
+<form th:action="@{/delete-lop}" th:object="${lop}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>MaLop:</td>
+            <td th:text="${lop.maLop}"></td>
+        </tr>
+        <tr>
+            <td>NamHoc:</td>
+            <td th:text="${lop.namHoc}"></td>
+        </tr>
+        <tr>
+            <td>HocKy:</td>
+            <td th:text="${lop.hocKy}"></td>
+        </tr>
+        <tr>
+            <td>MonHOc:</td>
+            <td th:text="${lop.getMonhoc().getMaMH()}"></td>
+        </tr>
+        <tr>
+            <td>GiaoVien:</td>
+            <td th:text="${lop.getGiaovien().getMaGV()}"></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Xoa lop"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

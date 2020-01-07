@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tao moi Lop</title>
+</head>
+<body>
+<h1>Tao moi Lop</h1>
+<p>
+    <a href="/lops">DS Lop</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-lop}" th:object="${lop}" method="post">
+    <table>
+        <tr>
+            <td>MaLop:</td>
+            <td><input type="text" th:field="*{maLop}"/></td>
+        </tr>
+        <tr>
+            <td>Namhoc:</td>
+            <td><input type="text" th:field="*{namHoc}"/></td>
+        </tr>
+        <tr>
+            <td>Hocky:</td>
+            <td><input type="text" th:field="*{hocKy}"/></td>
+        </tr>
+        <tr>
+            <td>MonHoc:</td>
+            <td>
+                <select th:field="*{monhoc}">
+                    <option th:each="p : ${monhocs}" th:value="${p.id}" th:text="${p.maMH}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Giaovien:</td>
+            <td>
+                <select th:field="*{giaovien}">
+                    <option th:each="p : ${giaoviens}" th:value="${p.id}" th:text="${p.maGV}"></option>
+                </select>
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Tao moi lop"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

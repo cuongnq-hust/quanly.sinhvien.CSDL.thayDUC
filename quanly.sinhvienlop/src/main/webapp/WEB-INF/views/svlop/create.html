@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tao moi svlop</title>
+</head>
+<body>
+<h1>Tao moi svlop</h1>
+<p>
+    <a href="/svlops">DS svlop</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-svlop}" th:object="${svlop}" method="post">
+    <table>
+        <tr>
+            <td>MaSV:</td>
+            <td>
+                <select th:field="*{sinhvien}">
+                    <option th:each="p : ${sinhviens}" th:value="${p.id}" th:text="${p.maSV}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>MaLop:</td>
+            <td>
+                <select th:field="*{lop}">
+                    <option th:each="p : ${lops}" th:value="${p.id}" th:text="${p.maLop}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+
+            <td>Diem:</td>
+            <td><input type="number" th:field="*{price}"/></td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Tao moi svlop"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

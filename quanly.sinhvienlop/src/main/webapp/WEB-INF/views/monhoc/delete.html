@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Xoa monhoc</title>
+</head>
+<body>
+<h1>Xoa monhoc</h1>
+<h2>Ban chac chan XOA??!!</h2>
+<p>
+    <a href="/monhocs">DS Monhoc</a>
+</p>
+<form th:action="@{/delete-monhoc}" th:object="${monhoc}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Ma MH:</td>
+            <td th:text="${monhoc.maMH}"></td>
+        </tr>
+        <tr>
+            <td>Ten MH:</td>
+            <td th:text="${monhoc.tenMH}"></td>
+        </tr>
+        <tr>
+            <td>So TC:</td>
+            <td th:text="${monhoc.soTC}"></td>
+        </tr>
+
+<!--        <tr>-->
+<!--            <td>Name:</td>-->
+<!--            <td th:text="${monhoc.name}"></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>Description:</td>-->
+<!--            <td th:text="${monhoc.description}"></td>-->
+<!--        </tr>-->
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Xoa monhoc"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

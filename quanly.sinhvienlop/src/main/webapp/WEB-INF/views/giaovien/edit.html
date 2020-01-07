@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chinh sua giaovien</title>
+</head>
+<body>
+<h1>Chinh sua giaovien</h1>
+<p>
+    <a href="/giaoviens">DS Giaovien</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-giaovien}" th:object="${giaovien}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Ma GV:</td>
+            <td><input type="text" th:field="*{maGV}"/></td>
+        </tr>
+        <tr>
+            <td>Ten GV:</td>
+            <td><input type="text" th:field="*{tenGV}"/></td>
+        </tr>
+        <tr>
+            <td>Ho GV:</td>
+            <td><input type="text" th:field="*{hoGV}"/></td>
+        </tr>
+        <tr>
+            <td>Don vi:</td>
+            <td><input type="text" th:field="*{donVi}"/></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Chinh sua Giaovien "></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

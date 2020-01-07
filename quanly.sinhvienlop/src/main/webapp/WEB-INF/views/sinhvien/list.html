@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sinhvien</title>
+</head>
+<body>
+<p><a href="/svlops"><button type="button">TRANG CHU</button></a></p>
+
+<a href="/create-sinhvien">Tao moi sinhvien</a>
+<h1>Sinhvien</h1>
+<table border="1">
+    <tr>
+        <th>Ma SV</th>
+        <th>Ten SV</th>
+        <th>Ho SV</th>
+        <th>Ngay sinh</th>
+        <th>Noi sinh </th>
+
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="sinhvien: ${sinhviens}">
+        <tr>
+            <td th:text="${sinhvien.maSV}"></td>
+            <td th:text="${sinhvien.tenSV}"></td>
+            <td th:text="${sinhvien.hoSV}"></td>
+            <td th:text="${sinhvien.ngaySinh}"></td>
+            <td th:text="${sinhvien.noiSinh}"></td>
+            <td><a th:href="@{/edit-sinhvien/__${sinhvien.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-sinhvien/__${sinhvien.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

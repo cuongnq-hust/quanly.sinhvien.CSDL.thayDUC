@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<h1>Chinh sua svlop</h1>
+<p>
+    <a href="/svlops">DS Svlop</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-svlop}" th:object="${svlop}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>MaSV</td>
+            <td>
+                <select name="sinhvien">
+                    <option th:each="p:${sinhviens}"
+                            th:value="${p.id}"
+                            th:text="${p.maSV}"
+                            th:selected="(${p.id}==*{sinhvien.id})">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>MaLop</td>
+            <td>
+                <select name="lop">
+                    <option th:each="p:${lops}"
+                            th:value="${p.id}"
+                            th:text="${p.maLop}"
+                            th:selected="(${p.id}==*{lop.id})">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Diem:</td>
+            <td><input type="number" th:field="*{price}"/></td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Chinh sua SVlop"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

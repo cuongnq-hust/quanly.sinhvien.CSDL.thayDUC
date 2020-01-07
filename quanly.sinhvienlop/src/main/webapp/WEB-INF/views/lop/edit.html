@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chinh sua lop</title>
+</head>
+<body>
+<h1>Chinh sua lop</h1>
+<p>
+    <a href="/lops">DS Lop</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-lop}" th:object="${lop}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>MaLop:</td>
+            <td><input type="text" th:field="*{maLop}"/></td>
+        </tr>
+        <tr>
+            <td>Namhoc:</td>
+            <td><input type="text" th:field="*{namHoc}"/></td>
+        </tr>
+        <tr>
+            <td>HocKy:</td>
+            <td><input type="text" th:field="*{hocKy}"/></td>
+        </tr>
+        <tr>
+            <td>MonHoc</td>
+            <td>
+                <select name="monhoc">
+                    <option th:each="p:${monhocs}"
+                            th:value="${p.id}"
+                            th:text="${p.maMH}"
+                            th:selected="(${p.id}==*{monhoc.id})">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>GiaoVien</td>
+            <td>
+                <select name="giaovien">
+                    <option th:each="p:${giaoviens}"
+                            th:value="${p.id}"
+                            th:text="${p.maGV}"
+                            th:selected="(${p.id}==*{giaovien.id})">
+                    </option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Chinh sua Lop"></td>
+        </tr>
+
+
+    </table>
+</form>
+</body>
+</html>

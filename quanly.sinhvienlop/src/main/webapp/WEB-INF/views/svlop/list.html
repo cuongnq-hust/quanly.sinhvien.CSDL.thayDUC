@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SVlop</title>
+</head>
+<body>
+<p><a href="/svlops"><button type="button">TRANG CHU</button></a></p>
+
+<p><a href="/monhocs"><button type="button">DS Monhoc</button></a></p>
+<p><a href="/giaoviens"><button type="button">DS Giaovien</button></a></p>
+<p><a href="/lops"><button type="button">DS Lop</button></a></p>
+<p><a href="/sinhviens"><button type="button">DS Sinhvien</button></a></p>
+<a href="/create-svlop">Tao  Svlop</a>
+<h1></h1>
+
+<form action="/searchBySinhvien" onchange="this.submit()">
+    <a>Nhap DIEM theo Sinhvien:</a>
+    <select name="search">
+        <option th:value="null">Chon sv</option>
+        <option
+                th:each="d:${sinhviens}"
+                th:text="${d.maSV}"
+                th:value="${d.getId()}"
+
+                th:selected="${search} == ${d.getId()}"
+
+        >
+
+        </option>
+    </select>
+
+<!--    <div th:if="${1==1}">2322</div>-->
+<!--    <div th:if="${1==2}">fdsgdgfgf</div>-->
+
+<!--    <div>[[${search}]]</div>-->
+<!--    <span th:utext="${null}">Description</span>-->
+
+
+</form>
+<br/>
+
+<form action="/searchByLop" onchange="this.submit()">
+    <a>Nhap DIEM theo Lop:</a>
+    <select name="search">
+        <option th:value="null">Chon lop</option>
+
+        <option
+                th:each="d:${lops}"
+                th:text="${d.maLop}"
+                th:value="${d.getId()}"
+
+                th:selected="${search} == ${d.getId()}"
+
+        >
+
+        </option>
+    </select>
+</form>
+
+
+<br/>
+<table border="1">
+    <tr>
+        <th>MaSV</th>
+        <th>MaLop</th>
+        <th>Diem</th>
+
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="svlop : ${svlops}">
+        <tr>
+            <td th:text="${svlop.getSinhvien().getMaSV()}"></td>
+            <td th:text="${svlop.getLop().getMaLop()}"></td>
+            <td th:text="${svlop.price}">
+
+
+            <td><a th:href="@{/edit-svlop/__${svlop.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-svlop/__${svlop.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+    <div>
+        <a th:href="@{'/svlop'(page=${svlops.number - 1})}" th:if="${svlops.hasPrevious()}">Previous</a>
+        <span th:text="${svlops.number + 1}"></span>/<span th:text="${svlops.totalPages}"></span>
+        <a th:href="@{'/svlop'(page=${svlops.number + 1})}" th:if="${svlops.hasNext()}">Next</a>
+    </div>
+</table>
+</body>
+</html>

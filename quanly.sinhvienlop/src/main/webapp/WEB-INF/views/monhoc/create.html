@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tao moi Monhoc</title>
+</head>
+<body>
+<h1>Tao moi Monhoc</h1>
+<p>
+    <a href="/monhocs">DS Monhoc</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-monhoc}" th:object="${monhoc}" method="post">
+    <table>
+        <tr>
+            <td>Ma MH:</td>
+            <td><input type="text" th:field="*{maMH}"/></td>
+        </tr>
+        <tr>
+            <td>Ten MH:</td>
+            <td><input type="text" th:field="*{tenMH}"/></td>
+        </tr>
+        <tr>
+            <td>So TC:</td>
+            <td><input type="number" th:field="*{soTC}"/></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Tao moi monhoc"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

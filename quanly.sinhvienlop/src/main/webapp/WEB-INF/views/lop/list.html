@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lop</title>
+</head>
+<body>
+<p><a href="/svlops"><button type="button">TRANG CHU</button></a></p>
+
+<p><a href="/monhocs"><button type="button">DS Monhoc</button></a></p>
+<p><a href="/giaoviens"><button type="button">DS Giaovien</button></a></p>
+
+<a href="/create-lop">Tao moi  lop</a>
+<h1>Lop</h1>
+<table border="1">
+    <tr>
+        <th>MaLop</th>
+        <th>NamHoc</th>
+        <th>HocKy</th>
+        <th>MaMH</th>
+        <th>MaGV</th>
+
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="lop: ${lops}">
+        <tr>
+            <td th:text="${lop.maLop}"></td>
+            <td th:text="${lop.namHoc}"></td>
+            <td th:text="${lop.hocKy}"></td>
+            <td th:text="${lop.getMonhoc().getMaMH()}"></td>
+            <td th:text="${lop.getGiaovien().getMaGV()}"></td>
+
+            <td><a th:href="@{/edit-lop/__${lop.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-lop/__${lop.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
